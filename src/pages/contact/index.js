@@ -1,6 +1,7 @@
 import React from 'react'
 import { navigate } from 'gatsby-link'
 import Layout from '../../components/Layout'
+import ReCAPTCHA from "react-google-recaptcha";
 
 function encode(data) {
   return Object.keys(data)
@@ -8,6 +9,9 @@ function encode(data) {
     .join('&')
 }
 
+function onChange(value) {
+  console.log("Captcha value:", value);
+}
 export default class Index extends React.Component {
   constructor(props) {
     super(props)
@@ -100,6 +104,10 @@ export default class Index extends React.Component {
                     />
                   </div>
                 </div>
+                <ReCAPTCHA
+                  sitekey="6Lc2xQoaAAAAABDQSbDP3tDOmVRLCnOzTiZS4UN2"
+                  onChange={onChange}
+                />
                 <div className="field">
                   <button className="button is-link" type="submit">
                     Send
